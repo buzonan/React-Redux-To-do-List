@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import TodoItem from "../components/TodoItem";
-import {addTask} from "../actions";
+import {deleteTask} from "../actions";
 
 
 const mapDispatchToProps = (dispatch) => ({
-    addTask: (task) => {dispatch(addTask(task))}
+    deleteTask: (taskId) => {dispatch(deleteTask(taskId))}
 });
 
 const TodoItemContainer = connect(null, mapDispatchToProps)(TodoItem);

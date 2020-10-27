@@ -7,7 +7,8 @@ class TodoItem extends Component {
     };
 
     removeTask = () => {
-
+        const taskId = this.props.todos.id;
+        this.props.deleteTask(taskId);
     };
     render() {
         return (
