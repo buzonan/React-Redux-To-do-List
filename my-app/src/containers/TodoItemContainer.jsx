@@ -3,13 +3,9 @@ import TodoItem from "../components/TodoItem";
 import {addTask} from "../actions";
 
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addTask: (task) => {
-            dispatch(addTask(task))
-        }
-    }
-};
+const mapDispatchToProps = (dispatch) => ({
+    addTask: (task) => {dispatch(addTask(task))}
+});
 
 const TodoItemContainer = connect(null, mapDispatchToProps)(TodoItem);
 
