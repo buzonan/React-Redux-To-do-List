@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 class TodoItem extends Component {
     render() {
         return (
-            <div>
-                <span>TodoItem</span>
-            </div>
+            <section>
+                <span>{this.props.todos.text}</span>
+            </section>
         );
     }
 }

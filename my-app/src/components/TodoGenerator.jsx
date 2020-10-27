@@ -19,13 +19,12 @@ class TodoGenerator extends Component {
 
 
     addTask = () => {
-        var task = {
+        const task = {
             id: uuidv4(),
             text: this.state.text,
             done: false
-        }
-
-        this.props.addTask(task)
+        };
+        this.props.addTask(task);
     };
 
     render() {

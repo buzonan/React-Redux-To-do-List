@@ -1,12 +1,8 @@
 import { combineReducers} from "redux";
 
-const initialState = {
-    taskList: []
-}
-
-const taskList = (state = initialState, action) => {
+const taskList = (state = [], action) => {
     if(action.type === "ADD_TASK"){
-        return {...state, taskList: action.payload};
+        return [...state, action.payload];
     }
     return state;
 };
