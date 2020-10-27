@@ -5,6 +5,7 @@ const taskList = (state = [], action) => {
         state.push(action.payload);
         return state;
     }
+    return state;
 };
 
 export default combineReducers({
