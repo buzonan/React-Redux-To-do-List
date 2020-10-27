@@ -19,6 +19,10 @@ class TodoGenerator extends Component {
 
 
     addTask = () => {
+        if(this.state.text === ""){
+            alert("Please Input Task");
+            return;
+        }
         const task = {
             id: uuidv4(),
             text: this.state.text,
@@ -32,7 +36,7 @@ class TodoGenerator extends Component {
         return (
             <div>
                 <input type="text" name="task" id="task" placeholder="Input Task here" onChange={this.getTask} />
-                <input type="button" value="add" onClick={this.addTask}/>
+                <input type="button" value="+" onClick={this.addTask}/>
             </div>
         );
     }

@@ -8,6 +8,10 @@ const taskList = (state = [], action) => {
     if(action.type === "DELETE_TASK"){
         return state.filter(task=>task.id !== action.payload);
     }
+
+    if(action.type === "DONE_TASK"){
+        return state.map(task => task.id === action.payload ? { ...task, done: !task.done } : task);
+    }
     return state;
 };
 
