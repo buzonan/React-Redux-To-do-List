@@ -10,6 +10,8 @@ import {initTaskList} from "./actions";
 import {connect} from "react-redux";
 import {Breadcrumb, Menu} from 'antd';
 import NotFound from "./components/NotFound";
+import { HomeOutlined, CheckOutlined } from '@ant-design/icons';
+
 
 class App extends React.Component {
     componentDidMount() {
@@ -35,8 +37,8 @@ class App extends React.Component {
                 <header className="App-header">
                     <BrowserRouter>
                         <Breadcrumb>
-                            <Breadcrumb.Item><Link to="/">Main Page</Link></Breadcrumb.Item>
-                            <Breadcrumb.Item><Link to="/generator">Add To Do Task</Link></Breadcrumb.Item>
+                            <Breadcrumb.Item><Link to="/"><HomeOutlined /> Home </Link></Breadcrumb.Item>
+                            <Breadcrumb.Item><Link to="/generator"><CheckOutlined /> Add To Do Task</Link></Breadcrumb.Item>
                             <Breadcrumb.Item overlay={menu}>
                                 Tasks
                             </Breadcrumb.Item>

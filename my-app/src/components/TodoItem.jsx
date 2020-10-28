@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {deleteTask, toggleTask} from "../apis/todos";
+import { Form, Input, Button, Checkbox } from 'antd';
 
 class TodoItem extends Component {
 
@@ -16,6 +17,8 @@ class TodoItem extends Component {
         const taskId = this.props.todo.id;
         deleteTask(taskId).then(this.props.deleteTask(taskId));
     };
+
+
 
     render() {
         const style = {

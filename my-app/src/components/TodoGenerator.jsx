@@ -1,41 +1,30 @@
 import React, {Component} from 'react';
 import {PlusCircleOutlined} from '@ant-design/icons';
 import {addNewTask} from "../apis/todos";
+import { Form, Input, Button, Checkbox } from 'antd';
+
 
 class TodoGenerator extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: ""
-        }
-    }
 
-    getTask = (event) => {
-        const task = event.target.value;
-        this.setState(() => {
-            return {text: task};
-        })
-    };
-
-
-    addTask = () => {
-        if(this.state.text === ""){
-            alert("Please Input Task");
-            return;
-        }
-
-        addNewTask(this.state.text).then(response => {
-            this.props.addTask(response.data)
+    addTask = values => {
+        addNewTask(values.taskDetail).then(response => {
+            this.props.addTask(response.data);
+            console.log(values.taskDetail)
         })
     };
 
     render() {
-
         return (
-            <div>
-                <input type="text" name="task" id="task" placeholder="Input Task here" onChange={this.getTask} />
-                <input type="button" icon={<PlusCircleOutlined />} onClick={this.addTask}/>
-            </div>
+            <Form layout="inline" name="AddTaskForm" onFinish={this.addTask}>
+                <Form.Item name="taskDetail" rules={[{ required: true, message: 'Please input your task description.' }]}>
+                    <Input placeholder="Type Task Description...."/>
+                </Form.Item>
+                <Form.Item layout="inline">
+                    <Button type="primary" htmlType="submit">
+                        Submit
+                    </Button>
+                </Form.Item>
+            </Form>
         );
     }
 }
