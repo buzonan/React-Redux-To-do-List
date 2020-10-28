@@ -8,7 +8,7 @@ import TodoDoneContainer from './containers/TodoDoneContainer';
 import {getAllTaskList} from "./apis/todos";
 import {initTaskList} from "./actions";
 import {connect} from "react-redux";
-import {Breadcrumb, Menu} from 'antd';
+import {Breadcrumb, Menu, BackTop} from 'antd';
 import NotFound from "./components/NotFound";
 import { HomeOutlined, CheckOutlined } from '@ant-design/icons';
 
@@ -21,6 +21,17 @@ class App extends React.Component {
     }
 
     render() {
+        const backToUp = {
+            height: 40,
+            width: 40,
+            lineHeight: '40px',
+            borderRadius: 4,
+            backgroundColor: '#1088e9',
+            color: '#fff',
+            textAlign: 'center',
+            fontSize: 14,
+        };
+
         const menu = (
             <Menu>
                 <Menu.Item>
@@ -35,6 +46,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <header className="App-header">
+                    <div style={{ height: '600vh', padding: 8 }}>
                     <BrowserRouter>
                         <Breadcrumb>
                             <Breadcrumb.Item><Link to="/"><HomeOutlined /> Home </Link></Breadcrumb.Item>
@@ -51,8 +63,11 @@ class App extends React.Component {
                             <Route path="/done" component={TodoDoneContainer}></Route>
                             <Route component={NotFound}></Route>
                         </Switch>
-                        {/* <ToDoList /> */}
                     </BrowserRouter>
+                        <BackTop>
+                            <div style={backToUp}>UP</div>
+                        </BackTop>
+                    </div>
                 </header>
             </React.Fragment>
         );
