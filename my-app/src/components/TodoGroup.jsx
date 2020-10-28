@@ -5,7 +5,7 @@ class TodoGroup extends Component {
 
     render() {
         const todoItems = this.props.taskList.map((todos) => (
-            <TodoItemContainer todos={todos} />));
+            <TodoItemContainer key={todos.id} todo={todos} />));
         return (
             <div>
                 {todoItems}

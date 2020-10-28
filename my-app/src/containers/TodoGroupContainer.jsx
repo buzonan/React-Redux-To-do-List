@@ -5,7 +5,7 @@ const mapStateToProps = state => ({
     taskList: state.taskList
 });
 
-const TodoGroupContainer = connect(mapStateToProps, null)(TodoGroup);
+const TodoGroupContainer = connect(mapStateToProps)(TodoGroup);
 
 
 export default TodoGroupContainer;
