@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {deleteTask, toggleTask} from "../apis/todos";
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Typography, Button, Tooltip } from 'antd';
+import { UserDeleteOutlined } from '@ant-design/icons';
 
+const { Title } = Typography;
 class TodoItem extends Component {
 
     markDone = () => {
@@ -18,18 +20,18 @@ class TodoItem extends Component {
         deleteTask(taskId).then(this.props.deleteTask(taskId));
     };
 
-
-
     render() {
         const style = {
           textDecoration: this.props.todo.done ? 'line-through' : ''
         };
         return (
             <section>
-                <input type={"button"} value={"✔"} name={"done"} id={"name"} onClick={this.markDone}/>
-                <span style={style}>     {this.props.todo.text}     </span>
-                <input type={"button"} value={"X"} name={"delete"} id={"delete"} onClick={this.removeTask}/>
+                <Button type="text" onClick={this.removeTask} icon={<UserDeleteOutlined/>}/>
+                <Button type="text" onClick={this.markDone}>
+                    <span style={style}>{this.props.todo.text}</span>
+                </Button>
             </section>
+
         );
     }
 }

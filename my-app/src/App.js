@@ -35,7 +35,7 @@ class App extends React.Component {
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <Link to="/list">Task List</Link>
+                    <Link to="/list">Pending</Link>
                 </Menu.Item>
                 <Menu.Item>
                     <Link to="/done">Done Tasks</Link>
@@ -50,9 +50,8 @@ class App extends React.Component {
                     <BrowserRouter>
                         <Breadcrumb>
                             <Breadcrumb.Item><Link to="/"><HomeOutlined /> Home </Link></Breadcrumb.Item>
-                            <Breadcrumb.Item><Link to="/generator"><CheckOutlined /> Add To Do Task</Link></Breadcrumb.Item>
                             <Breadcrumb.Item overlay={menu}>
-                                Tasks
+                                Filter
                             </Breadcrumb.Item>
                         </Breadcrumb>
 
