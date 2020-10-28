@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import TodoGeneratorContainer from '../containers/TodoGeneratorContainer';
 import TodoGroupContainer from '../containers/TodoGroupContainer';
-import axios from 'axios'
 
 class TodoList extends Component {
 

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import {AxiosInstance as axios} from "axios";
 
 
 class TodoGenerator extends Component {
@@ -23,12 +24,11 @@ class TodoGenerator extends Component {
             alert("Please Input Task");
             return;
         }
-        const task = {
-            id: uuidv4(),
-            text: this.state.text,
-            done: false
-        };
-        this.props.addTask(task);
+        axios.post('https://5d6f7991482b530014d2e376.mockapi.io/api/todos', {
+            text: this.state.text
+        }).then(response=>{
+            this.props.addTask(response.data)
+        });
     };
 
     render() {
