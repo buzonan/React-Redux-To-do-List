@@ -4,6 +4,7 @@ import TodoList from "./components/TodoList";
 import {BrowserRouter, HashRouter, Link, Switch, Route} from "react-router-dom";
 import TodoGeneratorContainer from "./containers/TodoGeneratorContainer";
 import TodoGroupContainer from "./containers/TodoGroupContainer";
+import TodoDoneContainer from './containers/TodoDoneContainer';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                       <Route exact path="/" component={TodoList}></Route>
                       <Route path="/generator" component={TodoGeneratorContainer}></Route>
                       <Route path="/list" component={TodoGroupContainer}></Route>
+                      <Route path="/done" component={TodoDoneContainer}></Route>
                   </Switch>
                   {/* <ToDoList /> */}
               </BrowserRouter>
