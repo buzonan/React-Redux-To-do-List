@@ -10,7 +10,7 @@ import {initTaskList} from "./actions";
 import {connect} from "react-redux";
 import {Breadcrumb, Menu, BackTop} from 'antd';
 import NotFound from "./components/NotFound";
-import { HomeOutlined, CheckOutlined } from '@ant-design/icons';
+import { HomeOutlined, ToTopOutlined } from '@ant-design/icons';
 
 
 class App extends React.Component {
@@ -64,7 +64,7 @@ class App extends React.Component {
                         </Switch>
                     </BrowserRouter>
                         <BackTop>
-                            <div style={backToUp}>UP</div>
+                            <div style={backToUp}><ToTopOutlined /></div>
                         </BackTop>
                     </div>
                 </header>
