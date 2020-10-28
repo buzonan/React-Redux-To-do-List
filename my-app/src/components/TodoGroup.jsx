@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import TodoItemContainer from "../containers/TodoItemContainer";
-import axios from "axios";
 
 class TodoGroup extends Component {
 

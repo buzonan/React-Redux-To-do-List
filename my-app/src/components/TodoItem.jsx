@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
+import {deleteTask, toggleTask} from "../apis/todos";
 
 class TodoItem extends Component {
 
     markDone = () => {
         const taskId = this.props.todo.id;
-        this.props.markTaskDone(taskId);
+        const taskStatus = this.props.todo.done;
+
+        toggleTask(taskId, taskStatus).then(response => {
+            this.props.markTaskDone(response.data.id);
+        })
     };
 
     removeTask = () => {
         const taskId = this.props.todo.id;
-        this.props.deleteTask(taskId);
+        deleteTask(taskId).then(this.props.deleteTask(taskId));
     };
 
     render() {

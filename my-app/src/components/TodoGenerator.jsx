@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import {AxiosInstance as axios} from "axios";
-
+import {PlusCircleOutlined} from '@ant-design/icons';
+import {addNewTask} from "../apis/todos";
 
 class TodoGenerator extends Component {
     constructor(props) {
@@ -24,11 +23,10 @@ class TodoGenerator extends Component {
             alert("Please Input Task");
             return;
         }
-        axios.post('https://5d6f7991482b530014d2e376.mockapi.io/api/todos', {
-            text: this.state.text
-        }).then(response=>{
+
+        addNewTask(this.state.text).then(response => {
             this.props.addTask(response.data)
-        });
+        })
     };
 
     render() {
@@ -36,7 +34,7 @@ class TodoGenerator extends Component {
         return (
             <div>
                 <input type="text" name="task" id="task" placeholder="Input Task here" onChange={this.getTask} />
-                <input type="button" value="+" onClick={this.addTask}/>
+                <input type="button" icon={<PlusCircleOutlined />} onClick={this.addTask}/>
             </div>
         );
     }

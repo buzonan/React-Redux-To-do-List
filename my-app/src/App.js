@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
 import TodoList from "./components/TodoList";
-import {BrowserRouter, HashRouter, Link, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Link, Switch, Route} from "react-router-dom";
 import TodoGeneratorContainer from "./containers/TodoGeneratorContainer";
 import TodoGroupContainer from "./containers/TodoGroupContainer";
 import TodoDoneContainer from './containers/TodoDoneContainer';
-import axios from "axios";
 import {getAllTaskList} from "./apis/todos";
 import {initTaskList} from "./actions";
 import {connect} from "react-redux";
+import {Breadcrumb, Menu} from 'antd';
+import NotFound from "./components/NotFound";
 
 class App extends React.Component {
     componentDidMount() {
@@ -18,29 +19,35 @@ class App extends React.Component {
     }
 
     render() {
+        const menu = (
+            <Menu>
+                <Menu.Item>
+                    <Link to="/list">Task List</Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/done">Done Tasks</Link>
+                </Menu.Item>
+            </Menu>
+        );
+
         return (
             <React.Fragment>
                 <header className="App-header">
                     <BrowserRouter>
-                        <ul>
-                            <li>
-                                <h2><Link to="/"> Go to Main Page</Link></h2>
-                            </li>
-                            <li>
-                                <h2><Link to="/generator"> Go to Add To Do Task</Link></h2>
-                            </li>
-                            <li>
-                                <h2><Link to="/list"> Go to Task List</Link></h2>
-                            </li>
-                            <li>
-                                <h2><Link to="/done"> Go to Done Tasks</Link></h2>
-                            </li>
-                        </ul>
+                        <Breadcrumb>
+                            <Breadcrumb.Item><Link to="/">Main Page</Link></Breadcrumb.Item>
+                            <Breadcrumb.Item><Link to="/generator">Add To Do Task</Link></Breadcrumb.Item>
+                            <Breadcrumb.Item overlay={menu}>
+                                Tasks
+                            </Breadcrumb.Item>
+                        </Breadcrumb>
+
                         <Switch>
                             <Route exact path="/" component={TodoList}></Route>
                             <Route path="/generator" component={TodoGeneratorContainer}></Route>
                             <Route path="/list" component={TodoGroupContainer}></Route>
                             <Route path="/done" component={TodoDoneContainer}></Route>
+                            <Route component={NotFound}></Route>
                         </Switch>
                         {/* <ToDoList /> */}
                     </BrowserRouter>
